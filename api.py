@@ -8,6 +8,12 @@ students = {
     1: {
         "name": "Paul",
         "age": "17",
+        "class": "Year 2",
+    },
+
+    2: {
+        "name": "Paul",
+        "age": "17",
         "class": "Year 12",
     }
 }
@@ -61,15 +67,16 @@ def create_student(student_id: int, student: Student):
 @app.put("/update-student/{student_id}")
 def update_student(student_id: int, student: UpdateStudent):
     if student_id not in students:
-        return{"Error": "Student does not exist"}
+        return{"Error  Student does not exist"}
 
     if student.name != None:
-        students[student_id] = student.name
+        students[student_id].name = student.name
 
     if student.age != None:
-        students[student_id] = student.age
+        students[student_id].age = student.age
 
     if student.year != None:
-        students[student_id] = student.year
+        students[student_id].year = student.year
 
-        return students[student_id]
+    # students[student_id] = student    
+    return students[student_id]
